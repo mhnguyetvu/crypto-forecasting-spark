@@ -17,7 +17,7 @@ This repository contains a dataset (`train.csv`) related to cryptoasset trading.
 
 The **Target** column represents the 15-minute residualized returns for each row. Residualized returns are calculated from log returns (𝑅𝑎) over 15 minutes using the formula:
 
-$`\[𝑅𝑎(𝑡)=𝑙𝑜𝑔\left(\frac{𝑃𝑎(𝑡+16)}{𝑃𝑎(𝑡+1)}\right)\]
+$\[ R_a(t) = \log\left(\frac{P_a(t+16)}{P_a(t+1)}\right) \]
 
 Additionally, a linear residualization is applied to remove the market signal from individual asset returns when creating the target. The formula for the target is:
 
