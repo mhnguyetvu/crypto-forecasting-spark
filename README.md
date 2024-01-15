@@ -1,4 +1,4 @@
-# Cryptoasset Trading Dataset
+# Crypto asset Trading Dataset
 
 This repository contains a dataset (`train.csv`) related to cryptoasset trading. The dataset consists of the following columns:
 
