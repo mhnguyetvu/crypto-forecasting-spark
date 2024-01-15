@@ -15,22 +15,30 @@ This repository contains a dataset (`train.csv`) related to cryptoasset trading.
 
 ## Target Explanation
 
-The **Target** column represents the 15-minute residualized returns for each row. Residualized returns are a measure used in financial analysis to account for market trends and variations. More details about how the target is calculated can be found in the 'Prediction and Evaluation' section of the notebook associated with this dataset.
+The **Target** column represents the 15-minute residualized returns for each row. Residualized returns are calculated from log returns (𝑅𝑎) over 15 minutes using the formula:
 
-## Data Dictionary
+\[𝑅𝑎(𝑡)=𝑙𝑜𝑔\left(\frac{𝑃𝑎(𝑡+16)}{𝑃𝑎(𝑡+1)}\right)\]
 
-- **timestamp**: YYYY-MM-DD HH:MM format.
-- **Asset_ID**: Unique identifier for each cryptoasset.
-- **Count**: Integer representing the number of trades.
-- **Open/High/Low/Close**: USD prices for the beginning, highest, lowest, and end of the minute.
-- **Volume**: Number of cryptoasset units traded.
-- **VWAP**: Volume-weighted average price for the minute.
-- **Target**: 15-minute residualized returns.
+Additionally, a linear residualization is applied to remove the market signal from individual asset returns when creating the target. The formula for the target is:
 
-## Prediction and Evaluation
+\[Target𝑎(𝑡)=𝑅𝑎(𝑡)−𝛽𝑎𝑀(𝑡)\]
 
-Refer to the associated notebook in this repository for details on how the target variable is calculated and for any specific instructions on prediction and evaluation processes.
+Where \(𝑀(𝑡)\) is the weighted average market returns, and \(\beta_a\) is the asset-specific weight.
 
-Feel free to explore and analyze the data for insights into cryptoasset trading patterns and behaviors.
+## Evaluation Metrics
+
+This dataset is part of a forecasting competition that aims to predict returns for individual assets. The predictions will be evaluated on a weighted version of the Pearson correlation coefficient. The weights for the evaluation are given by the `Weight` column in the Asset Details file.
+
+In this simplified tutorial, we will use correlation (without weights) for evaluation and consider only two assets, BTC and ETH.
+
+Make sure to refer to the competition guidelines for the complete evaluation details.
+
+## Getting Started
+
+1. Clone this repository.
+2. Explore the dataset (`train.csv`) and understand the features and target.
+3. Refer to the associated notebook for details on the target calculation and any specific instructions on prediction and evaluation processes.
+
+Feel free to analyze the data, build models, and participate in the competition!
 
 Happy coding!
